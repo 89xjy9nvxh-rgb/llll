@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全国各类继续教育咨询-添加微信</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            font-family: -apple-system, sans-serif;
+            text-align: center;
+        }
+       .container {
+            max-width: 320px;
+            margin: 0 auto;
+            background: white;
+            padding: 35px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+       .title {
+            color: #2d3748;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+       .qrcode {
+            width: 260px;
+            height: 260px;
+            margin: 0 auto 25px;
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 12px;
+            background: white;
+        }
+       .qrcode img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+       .wechat-tip {
+            color: #4a5568;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+       .copy-btn {
+            background-color: #4299e1;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.25s ease;
+            width: 100%;
+            margin-top: 5px;
+        }
+       .copy-btn:hover {
+            background-color: #3182ce;
+        }
+       .note {
+            color: #9f7aea;
+            font-size: 13px;
+            margin-top: 15px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">全国各类继续教育咨询</h2>
+        <div class="qrcode">
+            <img src="https://test.fukit.cn/autoupload/f/ptk7FtFzxZfBc0PCoDnndw/20260108/yOGV/1070X1512/0451f48962be3aac1a159d02204a41c4.jpg" alt="全国各类继续教育咨询微信二维码">
+        </div>
+        <p class="wechat-tip">长按识别二维码，或复制微信号添加</p>
+        <button class="copy-btn" onclick="copyWechatId()">复制微信号</button>
+        <p class="note">若扫码失败，可直接搜索微信号咨询</p>
+    </div>
+
+    <script>
+        // 你的微信号：11119006
+        const WECHAT_ID = '11119006';
+
+        function copyWechatId() {
+            if (!WECHAT_ID) {
+                alert('请先在代码中填写实际微信号！');
+                return;
+            }
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(WECHAT_ID)
+                   .then(() => {
+                        alert(`微信号 ${WECHAT_ID} 已复制到剪贴板！`);
+                    })
+                   .catch(() => {
+                        fallbackCopy();
+                    });
+            } else {
+                fallbackCopy();
+            }
+        }
+
+        function fallbackCopy() {
+            const textarea = document.createElement('textarea');
+            textarea.value = WECHAT_ID;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = 0;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                alert(`微信号 ${WECHAT_ID} 已复制到剪贴板！`);
+            } catch (err) {
+                alert(`复制失败，请手动复制微信号：${WECHAT_ID}`);
+            }
+            document.body.removeChild(textarea);
+        }
+    </script>
+</body>
+</html>
